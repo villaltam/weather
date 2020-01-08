@@ -1,6 +1,7 @@
 window.addEventListener('load', ()=> {
     let long;
     let lat;
+    let temperatureDescription = document.querySelector('.temperature-description');
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
