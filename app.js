@@ -5,7 +5,7 @@ window.addEventListener('load', ()=> {
     let temperatureCurrent = document.querySelector('.temperature-current');
     let locationTimezone = document.querySelector('.location-timezone');
 
-    if(navigator.geolocation){
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
