@@ -9,7 +9,7 @@ window.addEventListener('load', ()=> {
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
-            cons api = 'https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}'
+            const api = 'https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}';
         });
         fetch(api)
             .then(response => {
