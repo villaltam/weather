@@ -9,8 +9,8 @@ window.addEventListener('load', ()=> {
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
-            let url = 'https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}';
-        });
+            const url = 'https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}';
+       
         fetch(url)
             .then(response => {
                 return response.json();
@@ -19,8 +19,9 @@ window.addEventListener('load', ()=> {
                 const {temperature, summary} = data.currently;
                 //DOM elements
                 temperatureCurrent.textContent = temperature;
-
+            
             })
+        });
     }else{
         h1.tectContemt = "Please allow your browswer to provide your location"
     }
