@@ -1,16 +1,13 @@
 window.addEventListener('load', ()=> {
-    let long;
-    let lat;
+    let latlon;
     let temperatureDescription = document.querySelector('.temperature-description');
     let temperatureCurrent = document.querySelector('.temperature-current');
     let locationTimezone = document.querySelector('.location-timezone');
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-            long = position.coords.longitude;
-            lat = position.coords.latitude;
-            const proxy = 'https://cors-anywhere.herokuapp.com/';
-            const url = '${proxy}https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}';
+            latlon = position.coords.latitude + "," + position.coords.longitude;
+            let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${latlon}`;
        
         fetch(url)
             .then(response => {
@@ -18,9 +15,10 @@ window.addEventListener('load', ()=> {
             })
             .then(data => {
                 const {temperature, summary} = data.currently;
-                //DOM elements
+                //DOM elements from api
                 temperatureCurrent.textContent = temperature;
-            
+                temperatureDescription.textContent = summary;
+                locationTimezone.textContent = data.timezone;
             })
         });
     }else{
