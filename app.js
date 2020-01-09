@@ -9,9 +9,9 @@ window.addEventListener('load', ()=> {
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
-            api = "https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}";
+            let url = 'https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}';
         });
-        fetch(https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long})
+        fetch(url)
             .then(response => {
                 return response.json();
             })
