@@ -2,6 +2,9 @@ window.addEventListener('load', ()=> {
     let long;
     let lat;
     let temperatureDescription = document.querySelector('.temperature-description');
+    let temperatureCurrent = document.querySelector('.temperature-current');
+    let locationTimezone = document.querySelector('.location-timezone');
+
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
@@ -14,6 +17,9 @@ window.addEventListener('load', ()=> {
             })
             .then(data => {
                 const {temperature, summary} = data.currently;
+                //DOM elements
+                temperatureCurrent.textContent = temperature;
+
             })
     }else{
         h1.tectContemt = "Please allow your browswer to provide your location"
