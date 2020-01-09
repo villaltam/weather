@@ -11,7 +11,7 @@ window.addEventListener('load', ()=> {
             lat = position.coords.latitude;
             api = "https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}";
         });
-        fetch(api)
+        fetch(https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long})
             .then(response => {
                 return response.json();
             })
