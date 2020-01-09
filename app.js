@@ -22,21 +22,28 @@ window.addEventListener('load', ()=> {
                 temperatureDescription.textContent = summary;
                 locationTimezone.textContent = data.timezone;
                 setIcons(icon, document.querySelector(".icon"));
+                //celsius formula
+                let celsius = (temperature - 32) * (5/9);
 
                 //change temperature units
                 temperatureSection.addEventListener('click', () => {
                     if(temperatureSpan.textContent === "F"){
                         temperatureSpan.textContent = "C";
+                        temperatureCurrent.textContent = Math.floor(celsius);
                     }else{
                         temperatureSpan.textContent = "F";
+                        temperatureCurrent.textContent = temperature;
                     }
                 })
             })
         });
     }else{
-        h1.tectContemt = "Please allow your browswer to provide your location"
-    }
+        h1.textContent = "Please allow your browswer to provide your location"
 
+    }
+    
+
+    //weather icons
     function setIcons(icon, iconId){
         const skycons = new Skycons({color: "white"});
         const currentIcon = icon.replace(/-/g, "_").toUpperCase();
