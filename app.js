@@ -14,14 +14,22 @@ window.addEventListener('load', ()=> {
                 return response.json();
             })
             .then(data => {
-                const {temperature, summary} = data.currently;
+                const {temperature, summary, icon } = data.currently;
                 //DOM elements from api
                 temperatureCurrent.textContent = temperature;
                 temperatureDescription.textContent = summary;
                 locationTimezone.textContent = data.timezone;
+                setIcons(icon, document.querySelector(".icon"));
             })
         });
     }else{
         h1.tectContemt = "Please allow your browswer to provide your location"
+    }
+
+    function setIcons(icon, iconId){
+        const skycons = new Skycons({color: "white"});
+        const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+        skycons.play();
+        return skycons.set(iconId, Skycons[currentIcon]);
     }
 });
