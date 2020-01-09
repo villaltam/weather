@@ -1,6 +1,7 @@
 window.addEventListener('load', ()=> {
     let long;
     let lat;
+    let url;
     let temperatureDescription = document.querySelector('.temperature-description');
     let temperatureCurrent = document.querySelector('.temperature-current');
     let locationTimezone = document.querySelector('.location-timezone');
@@ -9,9 +10,9 @@ window.addEventListener('load', ()=> {
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
-            const api = "https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}";
+            url = "https://api.darksky.net/forecast/6325e4049a204a500dc19fe5da49aba0/${lat},${long}";
         });
-        fetch(api)
+        fetch(url)
             .then(response => {
                 return response.json();
             })
